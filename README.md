@@ -6,3 +6,4 @@
     4.BIT.cpp
     5.multiSet.cpp
     6.sparseTable.cpp
+    7.SQRT.cpp
