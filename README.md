@@ -8,3 +8,4 @@
     6.sparseTable.cpp
     7.SQRT.cpp
     8.bit2D.cpp
+    9.Mo without update.cpp
