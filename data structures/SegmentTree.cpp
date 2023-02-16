@@ -13,7 +13,7 @@ struct ST {
     }
     void laz(int st,int en,int idx) {
         if(lazy[idx]==0) return;
-        tree[idx] -= lazy[idx]*(en-st+1);
+        tree[idx] += lazy[idx]*(en-st+1);
         if(st != en) {
             int lf=2*idx+1,rt=2*idx+2;
             lazy[lf] += lazy[idx];
@@ -43,4 +43,4 @@ struct ST {
         int mid=st+(en-st)/2, lf=2*idx+1,rt=2*idx+2;
         return query(qs,qe,st,mid,lf)+query(qs,qe,mid+1,en,rt);
     }
-}tr;
+}sg;
