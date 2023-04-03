@@ -5,7 +5,7 @@ struct dai_sg {
         node_num = 1;
         set_node(1);
     }
-    set_node(int node) {
+    void set_node(int node) {
         lf[node] = rt[node] = 0;
         val[node] = 0;
         lazy[node] = 0;
