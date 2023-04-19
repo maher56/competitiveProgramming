@@ -15,10 +15,10 @@ struct ST {
         }
     }
     int query(int l,int r) {
-        if(l > r) R INF;
+        if(l > r) return INF;
         int sz = lg[r-l+1];
         int fi = mat[sz][l];
         int se = mat[sz][r-(1<<sz)+1];
-        R min(a[fi],a[se]);
+        return min(a[fi],a[se]);
     }
 } st;
