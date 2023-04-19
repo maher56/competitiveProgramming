@@ -10,7 +10,7 @@ struct ST {
         node ret;
         ret.sum = lf.sum+rt.sum;
         ret.laz = 0;
-        R ret;
+        return ret;
     }
     void build(int st=0,int en=n-1,int idx=0) {
         if(st==en) {
@@ -34,7 +34,7 @@ struct ST {
     }
     void update(int qs,int qe,int val,int st=0,int en=n-1,int idx=0) {
         laz(st,en,idx);
-        if(st > qe || en < qs) R ;
+        if(st > qe || en < qs) return ;
         if(st >= qs && en <= qe) {
             tree[idx].laz += val;
             laz(st,en,idx);
