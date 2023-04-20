@@ -186,6 +186,43 @@ long long countDifferentSubstrings() {
     return 1LL * n * (n + 1) / 2
     - accumulate(lcp.begin(), lcp.end(), 0LL);
 }
+void update(int &l,int &r,char x,int len) {
+    if(l == -1) return;
+    int al = l , ar = r ,mid, ans = -1;
+    while(al <= ar) {
+        mid = (al+ar)/2;
+        if(s.size()-sortedShifts[mid] < len) {
+            al = mid+1;
+        }else if(s[sortedShifts[mid]+len-1] > x) {
+            ar = mid-1;
+        }else if(s[sortedShifts[mid]+len-1] < x) {
+            al = mid+1;
+        }else {
+            ans = mid;
+            ar = mid-1;
+        }
+    }
+    if(ans == -1) {
+        l = r = -1;
+        return;
+    }
+    l = ans;
+    al = l , ar = r, ans=-1;
+    while(al <= ar) {
+        mid = (al+ar)/2;
+        if(s.size()-sortedShifts[mid] < len) {
+            al = mid+1;
+        }else if(s[sortedShifts[mid]+len-1] > x) {
+            ar = mid-1;
+        }else if(s[sortedShifts[mid]+len-1] < x) {
+            al = mid+1;
+        }else {
+            ans = mid;
+            al = mid+1;
+        }
+    }
+    r = ans;
+}
 int logn;
 string s;
 vector<vector<int>> eClass;
