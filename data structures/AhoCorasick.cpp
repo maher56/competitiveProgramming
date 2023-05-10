@@ -3,10 +3,10 @@ struct TrieNode {
     int go[ALPH];
     int child[ALPH];
     int suffixLink = -1;
-    int exitLink = 0;
-    int freq = 0;
+    int exitLink = 0; // nearest end in suffix link chain
+    int freq = 0; // frequency of the path from root to TrieNode
     int patternIndex = -1;
-    int patternCount = 0;
+    int patternCount = 0; // # of patterns in suffix link chain that ends in this node
     vector<int> occur;
     TrieNode() {
         memset(child,-1,sizeof child);
@@ -33,6 +33,7 @@ struct AhoCorasick {
         trie[cur].patternIndex = idx;
         return cur;
     }
+    // remember to call
     void build() {
         queue<int> q;
         for(int c = 0 ; c < ALPH ; c++) {
@@ -68,6 +69,8 @@ struct AhoCorasick {
             }
         }
     }
+    // O(len + totalOccurrences)
+    // occurrences are not sorted
     vector<int> getPattensOccurrences(string &s) {
         vector<int> ret;
         int cur = 0;
